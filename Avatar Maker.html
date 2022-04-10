@@ -1,0 +1,119 @@
+<html>
+
+<head>
+
+    <title>Avatar Maker</title>
+
+<script>
+
+window.onload = function ()
+    {
+       //Each block of code here from the head down to the background generates a different random component of the character.
+        //head
+        var robothead = new Image();
+        var robotheadnum=Math.floor(Math.random()*6)+1; //Change "3" to whatever number of head files you have
+        var robotheadname="head" + robotheadnum + ".png";
+        robothead.src=robotheadname;
+
+        //eyes
+        var roboteyes = new Image();
+        var roboteyesnum=Math.floor(Math.random()*4)+1; //Change "3" to whatever number of head files you have
+        var roboteyesname="eyes" + roboteyesnum + ".png";
+        roboteyes.src=roboteyesname;
+
+         //mouth
+         var robotmouth = new Image();
+        var robotmouthnum=Math.floor(Math.random()*6)+1; //Change "3" to whatever number of head files you have
+        var robotmouthname="mouth" + robotmouthnum + ".png";
+        robotmouth.src=robotmouthname;
+
+        //body
+        var robotbody = new Image();
+        var robotbodynum=Math.floor(Math.random()*4)+1; //Change "3" to whatever number of head files you have
+        var robotbodyname="body" + robotbodynum + ".png";
+        robotbody.src=robotbodyname;
+
+        //background
+        var robotbackground = new Image();
+        var robotbackgroundnum=Math.floor(Math.random()*36)+1; //Change "3" to whatever number of head files you have
+        var robotbackgroundname="background" + robotbackgroundnum + ".png";
+        robotbackground.src=robotbackgroundname;
+
+        // hue overlay
+        // This part of the code generates a random hue for the character. This is applied below in the "canvas" portion of the code.
+        var robothue = new Image(); 
+        var robothuenum=Math.floor(Math.random()*359)+1;
+
+        //head loaded
+        robothead.onload=function()
+        {
+            buildrobot();
+        }
+
+        //eyes loaded
+        roboteyes.onload=function()
+        {
+            buildrobot();
+        }
+        
+        //mouth loaded
+         robotmouth.onload=function()
+        {
+            buildrobot();
+        }
+
+        //body loaded
+        robotbody.onload=function()
+        {
+            buildrobot();
+        }
+
+        //body loaded
+        robotbackground.onload=function()
+        {
+            buildrobot();
+        }
+
+        //hue loaded
+        robothue.onload=function()
+        {
+            buildrobot();
+        }
+
+        function buildrobot()
+        {
+            var canvas=document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            canvas.width=1120;
+            canvas.height=1120;
+            canvas.style.filter = 'hue-rotate(' + robothuenum + 'deg)'; //This line applies the hue filter mentioned above.
+
+            //draw body
+            ctx.drawImage(robotbackground,((1120-robotbody.width)/2),0);
+            //draw body
+            ctx.drawImage(robotbody,((1120-robotbody.width)/2),0);
+            //draw eyes
+            ctx.drawImage(robothead,((1120-robothead.width)/2),0);
+            //draw mouth
+            ctx.drawImage(robotmouth,((1120-robotmouth.width)/2),0);
+            //draw head
+            ctx.drawImage(roboteyes,((1120-roboteyes.width)/2),0);
+            
+        }
+    }
+
+</script>
+
+</head>
+
+<body>
+
+    <div align="center">
+        <canvas id="canvas" style="border:5px solid #000000;"></canvas>
+        <br><br>
+        <button onClick="window.location.reload();"> Generate! </button>
+    </div>
+
+</body>
+
+</html>
